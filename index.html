@@ -1,0 +1,71 @@
+<head>
+	<title>TEST</title>
+	
+	<meta type="description" content="TEST">
+	<meta type="author" content="Roy">
+	
+	<link rel="stylesheet" type="text/css" href="theme/style.css">
+	
+	<script language="JavaScript">
+	function showHide(id, visibility) {
+		document.getElementById(id).style.display = visibility;
+	}
+	
+	function showHideRegister(id, visibility) {
+		document.getElementById(id).style.display = visibility;
+	}
+	
+	function clearInput(id) {
+	document.getElementById("loginform").reset();
+	document.getElementById("registerform").reset();
+	}
+	</script>
+	
+</head>
+
+<body bgcolor="FFFFFE">
+
+	<div id="header">
+		<ul id="nav">
+			<li id="HOME"><a href="index.html">Home</a></li>
+			<li id="LOGIN"><a href="javascript:void(0)" onclick="showHide('logindiv', 'inline');">Login</a></li>
+		</ul>	
+	</div>
+	
+	<div id="logindiv">
+		<H1>Login<H1>
+		
+		<button type="submit" id="exit_button" onClick="showHide('logindiv', 'none'); clearInput();">
+			<img src="theme/img/exit_img.png" width="30px" height="25px">
+		</button>
+		
+		<form id="loginform">
+			<input class="loginbox" type="text" name="username" placeholder="Username">
+			<input class="loginbox" type="password" name="password" placeholder="Password">			
+		</form>
+		<a style="color: #6697FF;font-size: 20px;text-decoration: none;-ms-transition: 0.25s; -moz-transition: 0.25s; -webkit-transition: 0.25s; -o-transition: 0.25s;" href="javascript:void(0)">Login</a><br><br>
+		
+		<a id="registerlink" style="color: #6697FF;font-size: 15px;text-decoration: none;-ms-transition: 0.25s; -moz-transition: 0.25s; -webkit-transition: 0.25s; -o-transition: 0.25s;" href="javascript:void(0)" onClick="showHideRegister('registerdiv', 'inline')">Register</a>
+	</div>
+	
+	<div id="registerdiv">
+		<H1>Register<H1>
+		
+		<button type="submit" id="exit_button" onClick="showHideRegister('registerdiv', 'none'); showHide('logindiv', 'none'); clearInput();">
+			<img src="theme/img/exit_img.png" width="30px" height="25px">
+		</button>
+		
+		<form id="registerform">
+			<input class="loginbox" type="text" name="username" placeholder="Username">
+			<input class="loginbox" type="password" name="password" placeholder="Password">
+			<input class="loginbox" type="password" name="confirm_password" placeholder="Confirm password">
+		</form>
+		
+		<a style="color: #6697FF;font-size: 20px;text-decoration: none;-ms-transition: 0.25s; -moz-transition: 0.25s; -webkit-transition: 0.25s; -o-transition: 0.25s;" href="javascript:void(0)">Register</a><br><br>
+
+	</div>
+	
+</body>
+	
+	
+	
