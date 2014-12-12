@@ -1,0 +1,295 @@
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Databank: `rvorster_sportvoeding`
+--
+CREATE DATABASE `rvorster_sportvoeding` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `rvorster_sportvoeding`;
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `BESTELLINGEN`
+--
+
+CREATE TABLE IF NOT EXISTS `BESTELLINGEN` (
+  `bestelling_nummer` int(11) NOT NULL AUTO_INCREMENT,
+  `klant_nummer` int(11) NOT NULL,
+  `product_nummer` int(11) NOT NULL,
+  `datum_verzonden` date NOT NULL,
+  `hoeveelheid` int(11) NOT NULL,
+  PRIMARY KEY (`bestelling_nummer`),
+  UNIQUE KEY `bestelling_nummer` (`bestelling_nummer`),
+  KEY `klant_nummer` (`klant_nummer`),
+  KEY `product_nummer` (`product_nummer`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=61 ;
+
+--
+-- Gegevens worden uitgevoerd voor tabel `BESTELLINGEN`
+--
+
+INSERT INTO `BESTELLINGEN` (`bestelling_nummer`, `klant_nummer`, `product_nummer`, `datum_verzonden`, `hoeveelheid`) VALUES
+(1, 1, 1, '2014-12-03', 12),
+(3, 4, 42, '2014-12-02', 9),
+(4, 9, 12, '2014-12-30', 87),
+(5, 48, 1, '2015-01-08', 1),
+(6, 20, 17, '2014-12-25', 9),
+(7, 16, 50, '2014-12-01', 1),
+(8, 10, 39, '2014-12-06', 0),
+(9, 1, 3, '2014-12-15', 1),
+(10, 20, 10, '2014-12-01', 1),
+(11, 12, 19, '2014-12-05', 1),
+(12, 7, 36, '2014-12-02', 1),
+(13, 13, 10, '2014-12-31', 1),
+(14, 45, 30, '2014-12-17', 6),
+(15, 47, 3, '2014-12-17', 4),
+(16, 4, 44, '2014-12-18', 12),
+(17, 45, 10, '2014-12-01', 9),
+(18, 10, 43, '2014-12-26', 1),
+(19, 43, 5, '2014-12-30', 1),
+(20, 7, 49, '2014-12-08', 2),
+(21, 5, 45, '2014-12-25', 4),
+(22, 44, 5, '2014-12-11', 7),
+(23, 3, 1, '2014-12-13', 1),
+(24, 6, 41, '2014-12-26', 5),
+(25, 14, 42, '2014-12-19', 1),
+(26, 4, 36, '2014-12-18', 3),
+(27, 18, 39, '2014-12-01', 8),
+(28, 50, 48, '2014-11-10', 1),
+(29, 48, 33, '2014-12-27', 1),
+(30, 17, 4, '2014-12-25', 7),
+(31, 16, 19, '2014-12-23', 1),
+(32, 12, 4, '2014-12-25', 0),
+(33, 1, 5, '2014-12-31', 1),
+(34, 2, 2, '2014-12-19', 2),
+(35, 6, 2, '2015-03-27', 3),
+(36, 6, 6, '2014-12-01', 4),
+(37, 6, 2, '2015-03-27', 3),
+(38, 6, 6, '2014-12-01', 4),
+(39, 44, 11, '2014-12-30', 3),
+(40, 6, 8, '2014-12-13', 2),
+(41, 16, 17, '2014-12-04', 2),
+(42, 18, 11, '2014-12-02', 21),
+(43, 9, 15, '2014-12-30', 5),
+(44, 5, 13, '2014-12-16', 43),
+(45, 14, 11, '2014-12-31', 567),
+(46, 2, 6, '2014-12-05', 76),
+(47, 14, 11, '2014-12-31', 567),
+(48, 2, 6, '2014-12-05', 76),
+(49, 9, 4, '2014-12-30', 3),
+(50, 8, 47, '2015-02-19', 1234),
+(51, 9, 4, '2014-12-30', 3),
+(52, 8, 47, '2015-02-19', 1234),
+(53, 46, 7, '2014-12-09', 0),
+(54, 10, 4, '2014-10-20', 234),
+(55, 46, 7, '2014-12-09', 0),
+(56, 10, 4, '2014-10-20', 234),
+(57, 48, 14, '2014-11-17', 321),
+(58, 4, 6, '2014-12-25', 123),
+(59, 48, 14, '2014-11-17', 321),
+(60, 4, 6, '2014-12-25', 123);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `KLANTEN`
+--
+
+CREATE TABLE IF NOT EXISTS `KLANTEN` (
+  `klant_nummer` int(11) NOT NULL AUTO_INCREMENT,
+  `voornaam` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `achternaam` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `email` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `adres` text NOT NULL,
+  `plaats` text NOT NULL,
+  `aantal_bestellingen` int(11) NOT NULL,
+  `soort_sport` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `postcode` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `username` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `password` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`klant_nummer`),
+  KEY `klant_nummer` (`klant_nummer`),
+  KEY `klant_nummer_2` (`klant_nummer`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=53 ;
+
+--
+-- Gegevens worden uitgevoerd voor tabel `KLANTEN`
+--
+
+INSERT INTO `KLANTEN` (`klant_nummer`, `voornaam`, `achternaam`, `email`, `adres`, `plaats`, `aantal_bestellingen`, `soort_sport`, `postcode`, `username`, `password`) VALUES
+(1, 'Abel', 'Vroegop', 'abelvroegop@gmail.com', 'molenweg 7a ', 'amstelveen ', 1, 'rennen', '1182ck', 'xX-abelboy-Xx', '953eaa95d5b978a8188hd9babb865eca'),
+(2, 'Roy', 'voerster', 'rvor@hotmale.com', 'knarfweg 7 ', 'amsterdam', 0, 'dwergwerpen', '1065KN', 'roy-de-boy', '543eaa95d5b978a818b7d9babb865eca'),
+(3, 'Ollie', 'weerden', '', 'kenkersatraat 9 ', 'amsterdam', 7, 'schaken', '8890kk', 'ebola-man123', '953eaa95d5b978a818b7d9babb865eca'),
+(4, 'Kent', 'bakker', 'krentenbakker@jwz.co.uk', 'secureconnectiestraat 12 ', 'amsterdam', 0, 'schaken', '0000kk', 'bakker_deboy', '91df9c0536e584fcf6cf276212891dd7'),
+(5, 'Tenen', 'auke', 'auke@mail.com', 'amsterdamseweg 9 ', 'amsterdam', 22, 'karate', '9982ak', 'illegalert123', '6c5cd7b6cebda22e856f3e09a4eb169f'),
+(6, 'Jamy', 'olievier', 'koken@gaymail.co.uk', 'amstelveenseweg 7 ', 'amsterdam', 2, 'karate', '9974lo', 'ikweetniet', '2848a76204ac0cea28252bdc56d9a754'),
+(7, 'Bas', 'bas', 'basbas@bas.nl', 'basstraat 7 ', 'amsterdam', 5, 'rennen', '1189CK', 'basbasbas', '57bfda11055bafdfd9baeb9c4c03e4a4'),
+(8, 'Hitler', 'adolfin', 'imback@mobitches.com', 'molenweg 9 ', 'amsterdam', 19200, 'jagen', '5567CK', 'MO-bitches', '6f139f501e18ffa9e73c1266caa64eda'),
+(9, 'Kees', 'kees', 'keeskees@kees.co.uk', 'keesweg 9 ', 'amstelveen', 9, 'karate', '1190CK', 'keeskeeskeeskees', '09b2d16aaeea63bc9b6787b612945769'),
+(10, 'Stoner', 'deboner', 'pussyslayer@ownermail.zo', 'keesweg 50 ', 'amstelveen', 11, 'schaken', '7764KK', 'xX-pussyslayer-Xx', 'd02d7e512355fee459ccc61f5384dff3'),
+(11, 'Ton', 'velsebeur', 'sexxysingelsbijjouwindebuurt@hotmail.ger', 'lerarenkamer 6 ', 'amstelveen', 0, 'dwergwerpen', '8852ok', 'leraarbaas-1', 'f9425f51529af4d55b92648a64498a3e'),
+(12, 'Bram', 'bot ter ham', 'naam@mail.land', 'amsterdamse weg 1', 'aalsmeer', 0, 'rennen', '1182CK', 'botterhammie', '7d57b22beb403f1d60d97c06afff4109'),
+(13, 'Kees', 'kaas', 'keeskaas@hotmail.nl', 'keesdlaan 8', 'amstelveen', 0, 'karate', '1178CK', 'keeshetbees(t)', '78186c28be46568fcb8df884e05d44a8'),
+(14, 'Xavier', 'kees', 'xavier@kees.org', 'kees 8', 'amstelveen', 0, 'schaken', '4690TK', 'xa4', '104b16ee107f1644c93c326d3d4a8008'),
+(15, 'Tim', 'Auke', 'Timauke@gmail.com', 'laanm 9', 'amstelveen', 0, 'karate', '66423rk', 'timauke1', '2bdc8d3371b68d24ab8a474c63df2767'),
+(16, 'Klagers', 'tenen', 'ja@mail.ocm', 'nee 8', 'amstelveen', 0, 'schaken', '6555rk', 'klagers1`23432', '833f22d618990867b654c01aaddda584'),
+(17, 'Rens', 'hakker', 'renshakker@gaymail.co.uk.com', 'keeslaan 9 ', 'aalsmeer', 0, 'dammen', '7777TK', 'hakker4life', '9969588b4b71d393248424b61c2f0a73'),
+(18, 'Kaas', 'kaas', 'kaaaskaas@kaas.TK', 'kaaslaan 9 ', 'aalsmeer', 0, 'karate', '6645UO', 'kaas=baas', 'a19da102fc3dc2d7ffaed264e89297b5'),
+(20, 'Daan', 'baan', 'daanbaan@gmail.com', 'keeslaan 1 ', 'aalsmeer', 0, 'schaken', '7777Tk', 'daanbanaan', '7563eeea761ce9b714bf6ed2f6fb51fc'),
+(21, 'Dit', 'saai', 'ditsaai@gmail.com', 'keeslaan 1234 ', 'aalsmeer', 0, 'dammen', '1182CC', 'dammen is vet', '721db323ad4b0a8b1823d902e5633676'),
+(22, 'Turk', 'turk', 'turkturk@turk.TK', 'turkslaan 9 ', 'amstelveen', 0, 'dammen', '1182CK', 'turk=koel', '67cfa25af37d4f5965c7c6bfe14c6250'),
+(23, 'Dood', 'dood', '', 'doodlaan 9 ', 'amstelveen', 0, 'dammen', '1182CK', 'dood=bloot lol', '95080a88c2fcedf31e1ca981c71b8d9e'),
+(24, 'Daan', 'daan', 'daandaandaan@daanamil.com', 'molenweg 7a ', 'aalsmeer', 11, 'rennen', '1192CK', 'daantjeVB', 'af3d1c182e63112836941fa6a9e38956'),
+(25, 'Levie', 'levie', 'levielevie@levie.jo', 'molenweg 7a ', 'aalsmeer', 0, 'rennen', '1182CK', 'levieboy1999', '0cc175b9c0f1b6a831c399e269772661'),
+(26, 'Kees', 'Buskermolen', 'keesievandesunshineband@lolzz.nl', 'sportlaan 64', 'amstelveen', 12, 'Dammen', '2341KS', 'tsjezikeezi12', '643124a88ec462d3ff8dda56ca718147'),
+(27, 'Celinee', 'Buskermolen', 'CenK@love.nl', 'penislaan 23', 'aalsmeer', 1, 'Badminton', '8945PZ', 'Cediepee24', 'eea73c9bdf23cb88f94fdb5473543f1e'),
+(28, 'Emma ', 'Penis, van', 'penissenvoorlife@live.nl', 'lange lindelaan 44', 'amsterdam', 154, 'Cricket', '3265PF', 'penis4u', '8a2f8e6fcd78b2d528b8c44bb83e4703'),
+(29, 'Jan', 'Orlandi', '', 'Janisonderdepanlaan 44', 'aalsmeer', 564, 'Hordenlopen', '3098JO', 'OrlandiGhandi144', 'e481d3436a55f7a5f0cbcfebd7bf3f38'),
+(30, 'Johanni', 'pfijfer', 'pfijfer@vissen.vis', 'aquariumlaan 45', 'amstelveen', 2, 'duiken', '1234VI', 'vissenpfijfer1', '0a3bfe8fe9252689792c4ecceac765e6'),
+(31, 'Docter', 'cooper', 'coopiepoopie@poep.nl', 'coop 43', 'aalsmeer', 34, 'lacrosse', '1690DR', 'DocktorCocktor', 'c4ca4238a0b923820dcc509a6f75849b'),
+(32, 'Mark', 'Asturberen', 'M.asturberen@hotmail.com', 'Vaginaan 34', 'Keesdam', 45, 'Rukken', '3654AM', 'IKLIKPENISSEN#PEUSEMS', 'c9d6ccf9a00b5752d6c76a2cdcbe2ba2'),
+(33, 'Blow', 'Fly', 'BlowFlyDiePie@blowjobs.cl', 'Zuiglaan 34', 'amstelveen', 34, 'Zuigen', '1257GT', 'Zuigvlieg123', 'ab516e54ef13f24d707b73124586150d'),
+(34, 'Hihihihi', 'hahahhaha', 'hihihihi@hahaha.com', 'hahahalaan 35', 'amstelveen', 68, 'Lachen', '2569HA', 'Hahahahaha34', 'c4a3015ac680e352d35a8d775f8ddce0'),
+(35, 'Hans', 'Pans', 'Kevertje@peusems.nl', 'Hansiepansielaan 9078', 'amstelveen', 67, 'Duiken', '1456HS', 'Hansiepansie', '7815696ecbf1c96e6894b779456d330e'),
+(36, 'Joep', 'staat', 'opdestoep@gmail.com', 'stoep 35', 'Keesdam', 35, 'Schaken', '4783SK', '#Joeperdepoep', 'f777e4827069814b79a44ae7ecb97ae5'),
+(37, 'Abel', 'Stopcontact', 'Abelboy@gmail.com', 'Uithoornse weg 5679', 'Keesdam', 48, 'Snel wandelen', '3545AJ', 'AbelKabel#lolz', '653cf2ec8540a6f161b21d4afb0c9d1c'),
+(38, 'Niemand', 'weet', 'datiktepelstreeltje@he.et', 'raralaan 34', 'Keesdam', 90, 'Dammen', '6715TG', 'tepelstreeltje4', 'be638346e4d2b0170fcd73742ef60b54'),
+(39, 'Levie', 'Pilarski', 'LeviePik132@gmail.com', 'Molenweg 7z', 'Keesdam', 125, 'Niks', '3456LZ', 'LeverKever3', '*471AE82A5448DB9B6C58B0C8B271919DA6E6A21A'),
+(40, 'Eva', 'Kleva', 'reva@peva.eva', 'Sevalaan 3', 'Keesdam', 12, 'Paardberijden', '8291EA', 'EVADEKLEVA"6', '*78EAAE6B66C8304517D0BD3818515D012D8FCFE2'),
+(41, 'Yo', '''zzup', 'zzupbruh@gmail.com', 'Bruhlaan 467', 'Keesdam', 47, 'hockey', '1672BR', 'Chillinwithmebruh', '*7ADD25D4142C9F3B7C7D54C8DA3E959FE113A610'),
+(42, 'Pew', 'die', 'Pie@gmail.com', 'zwedenlaan 4', 'Keesdam', 45873, 'Gamen', '1469PD', 'Pewds#nohomo', '*3A2461D31C8D8F192717DD38AE332F2708906AE2'),
+(43, 'Nikifor ', 'Eyvindur ', 'EyvindurIseav@gmail.ch', 'immigrant 56', 'Keesdam', 5558, 'Asielzoeken', '5671IM', 'KlompenPompen0987654321', '*3BA6AAB51AC63AAD723A2041BB3A6DF573A723C7'),
+(44, 'Al', 'Mahed', 'ISISISISISIS@gmail.IS', 'ISLaan 4', 'Keesdam', 7931, 'Jagen', '5783IS', 'ISISwithlove5', 'c5bf5c5fc7a5b87e088555c85ca3477f'),
+(45, 'DERP', 'de herp', 'derp@gmail.com', 'jastraat ', 'aalsmeer', 0, 'schaken', '1192CO', 'derp123', '*5B9956176408EDCAC92456D111CEB0706C5BC9F3'),
+(46, 'Boy', 'beuse', 'bb@gmail.com', 'wegweg 99 ', 'aalsmeer', 0, 'dammen', '8760ko', 'jihad', '*5B2269583125A52A4B33969A82032492817FDB96'),
+(47, 'Kees', 'roy', 'keesroy@gmail.com', 'jaweg 76 ', 'aalsmeer', 0, 'schaken', '8645LO', 'keesroy9', '*D2D247145CA69A451B39FDF80CBD41F889D95823'),
+(48, 'Bange', 'bert', 'bangebert@jahoe.co.uk', 'keesweg 67 ', 'aalsmeer', 0, 'dammen', '7654UK', 'bangebart', '*E72B08C841E005B05BD564FA1C18CAFFB9FEF5FC'),
+(49, 'Kaas', 'bert', 'kb@gmail.com', 'Sportlaan 9 amstelveen', 'aalsmeer', 0, 'schaken', '8888ol', 'bertk123', '*B3466B2181E6EB8AD4506EAC7B411E233260E4EC'),
+(50, 'Slaan', 'slaan', 'ss@gmail.com', 'wegstraat 9 ', 'aalsmeer', 0, 'dammen', '8148IP', 'damlam', '*93A4090E8DCF79E6B08AAC376D16731655A86C6A'),
+(51, 'Marty', 'Party', 'PartyMarty123@marty.pt', 'fissalaan 4', 'aalsmeer', 789452, 'Feesten', '5624MP', 'Martyfissaman#Porno', '*F90F5C37BC92528EF01CF935855485D3E9C41C84');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `LEVERANCIERS`
+--
+
+CREATE TABLE IF NOT EXISTS `LEVERANCIERS` (
+  `leverancier_nummer` int(11) NOT NULL AUTO_INCREMENT,
+  `leverancier_naam` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `telefoon` int(11) NOT NULL,
+  `adres` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  PRIMARY KEY (`leverancier_nummer`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Gegevens worden uitgevoerd voor tabel `LEVERANCIERS`
+--
+
+INSERT INTO `LEVERANCIERS` (`leverancier_nummer`, `leverancier_naam`, `telefoon`, `adres`) VALUES
+(1, '3action', 678523674, 'kanaaldijk 5'),
+(2, 'Born', 645879123, 'boerstraat 8'),
+(3, 'Dextro Energy', 206438210, 'keesweg 100 '),
+(4, 'Beet-it', 206438200, 'keesweg 120 '),
+(5, 'X-Socks', 645793152, 'rotweg 89'),
+(6, 'A. Vogel', 645817236, 'houtweg 5678'),
+(7, 'High5', 612345678, 'langelindelaan 5'),
+(8, 'peptiplus', 645874237, 'hotheidlaan 87'),
+(9, 'Spibelt', 645793178, 'gorterweg 56'),
+(10, 'Wcup', 645817237, 'lerarenkamer hok 5a');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `PRODUCTEN`
+--
+
+CREATE TABLE IF NOT EXISTS `PRODUCTEN` (
+  `product_nummer` int(11) NOT NULL AUTO_INCREMENT,
+  `naam_product` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `leverancier_nummer` int(11) NOT NULL,
+  `soort_product` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `prijs` bigint(30) NOT NULL,
+  `beschikbaar` int(11) NOT NULL,
+  PRIMARY KEY (`product_nummer`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=52 ;
+
+--
+-- Gegevens worden uitgevoerd voor tabel `PRODUCTEN`
+--
+
+INSERT INTO `PRODUCTEN` (`product_nummer`, `naam_product`, `leverancier_nummer`, `soort_product`, `prijs`, `beschikbaar`) VALUES
+(1, 'Bietsap', 4, 'dk', 598, 1),
+(2, 'Dextro energy Uranium', 3, 'd', 179, 1),
+(3, 'Dextro energy magnesium', 3, 'k', 190, 1),
+(4, 'Jakob tabletten', 1, 'k', 5000, 0),
+(5, 'Xavier sap', 2, 'k', 582300, 0),
+(6, 'roy wortels', 5, 'k', 100, 1),
+(7, 'TON tonnies', 6, 'dk', 1250, 1),
+(8, 'jasper o''s', 8, 'k', 12500, 1),
+(9, 'Ipad 3', 7, 'd', 35000, 0),
+(10, 'jam', 4, 'k', 12300, 1),
+(11, 'kaas', 8, 'dk', 1900, 1),
+(12, 'putje', 9, 'dk', 100, 1),
+(13, 'laptoppies', 10, 'd', 290, 1),
+(14, 'botlot', 1, 'dk', 18900, 1),
+(15, 'Dextro Energy mantiuaom', 5, 'k', 12467900, 1),
+(16, 'powerpillzz', 1, 'k', 2900, 1),
+(17, 'bak vis', 2, 'dk', 1595, 1),
+(18, 'lenovo ochtend steroÃ¯den', 3, 'k', 2000000, 1),
+(19, 'lenovo avond steroÃ¯den', 3, 'k', 1999999, 1),
+(20, 'lenovo middag steroÃ¯den', 3, 'k', 1999999, 1),
+(21, 'lenovo tussedoortjes steroÃ¯den', 3, 'k', 1898000, 1),
+(22, 'lenovo altijd steroiden', 3, 'k', 1230000, 1),
+(23, 'Noord koreaanse viagra', 4, 'd', 1900, 1),
+(24, 'ton tonno''s', 5, 'dk', 20, 0),
+(25, 'tum tum ochtend runners', 6, 'd', 3099, 1),
+(26, 'klock', 7, 'k', 9820, 0),
+(27, 'thee', 8, 'dk', 120, 1),
+(28, 'nexus de plexus', 9, 'dk', 199, 1),
+(29, 'purno de purno', 10, 'd', 34654, 1),
+(30, 'jam 2.0', 5, 'dk', 12, 1),
+(31, 'jam 3.9', 5, 'd', 1000, 1),
+(32, 'LancieRensie', 4, 'd', 47, 1),
+(33, 'RockNRun', 8, 'd', 89, 1),
+(34, 'AbelSpuitje', 9, 'k', 2, 0),
+(35, 'Rennenvoorgevorderden', 3, 'd', 455, 1),
+(36, 'Fruitpunch', 7, 'k', 3, 1),
+(37, 'MonkeyJuice', 6, 'dk', 22, 0),
+(38, 'Runforyourlife', 1, 'd', 12, 1),
+(39, 'carbofruit', 7, 'dk', 7, 1),
+(40, 'gobar', 3, 'dk', 26, 1),
+(41, 'peppsi', 9, 'd', 10, 1),
+(42, 'powerbalance', 8, 'dk', 25, 1),
+(43, 'Sportsor', 1, 'dk', 12, 0),
+(44, 'magnesium', 4, 'k', 4, 1),
+(45, 'Peptopro', 3, 'k', 8, 1),
+(46, 'powerplay', 6, 'd', 569, 1),
+(47, 'losse proteines', 3, 'dk', 465, 1),
+(48, 'Toyota yaris', 2, 'd', 2, 1),
+(49, 'Isolate', 2, 'dk', 8, 1),
+(50, 'Wcup', 10, 'dk', 49, 1),
+(51, 'Performantie', 10, 'k', 1, 1);
+
+--
+-- Beperkingen voor gedumpte tabellen
+--
+
+--
+-- Beperkingen voor tabel `BESTELLINGEN`
+--
+ALTER TABLE `BESTELLINGEN`
+  ADD CONSTRAINT `BESTELLINGEN_ibfk_2` FOREIGN KEY (`klant_nummer`) REFERENCES `KLANTEN` (`klant_nummer`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `BESTELLINGEN_ibfk_3` FOREIGN KEY (`product_nummer`) REFERENCES `PRODUCTEN` (`product_nummer`);
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
